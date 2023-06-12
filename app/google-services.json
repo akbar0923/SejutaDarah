@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673017522538",
+    "project_id": "sejutadarah",
+    "storage_bucket": "sejutadarah.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673017522538:android:72e1d80a6e5b234e329d13",
+        "android_client_info": {
+          "package_name": "com.example.sejutadarah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673017522538-noa3ghb5541r63s46h1lnlkgbo1r23rf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACu7dpQQLNX9IPnN1FUGR7ub4hIZ3A_ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673017522538-noa3ghb5541r63s46h1lnlkgbo1r23rf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
