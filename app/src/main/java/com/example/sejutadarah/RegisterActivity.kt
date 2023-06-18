@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.database.FirebaseDatabase
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -31,14 +32,27 @@ class RegisterActivity : AppCompatActivity() {
         btnRegister = findViewById(R.id.btnRegister)
 
         btnRegister.setOnClickListener {
-            val fullName = etFullName.text.toString()
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
+            val fullName = etFullName.text.toString().trim()
+            val email = etEmail.text.toString().trim()
+            val password = etPassword.text.toString().trim()
 
             // Validasi inputan
             if (fullName.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Harap isi semua field", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+            }
+
+            val ref = FirebaseDatabase.getInstance().getReference("userSejutaDarah")
+
+            val userId = ref.push().key
+
+            val user = userSejutaDarah(userId, fullName, email, password)
+
+            if (userId != null) {
+                ref.child(userId).setValue(user).addOnCompleteListener{
+                    Toast.makeText(applicationContext, "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                }
+
             }
 
             // Proses pendaftaran pengguna baru dengan Firebase Authentication

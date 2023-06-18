@@ -48,6 +48,9 @@ class LoginActivity : AppCompatActivity() {
                         Toast.makeText(this, "Login berhasil", Toast.LENGTH_SHORT).show()
 
                         // Lakukan tindakan sesuai kebutuhan, seperti mengarahkan pengguna ke halaman berikutnya
+                        val intent = Intent(this, HomeActivity::class.java)
+                        startActivity(intent)
+                        finish()
 
                     } else {
                         // Login gagal
