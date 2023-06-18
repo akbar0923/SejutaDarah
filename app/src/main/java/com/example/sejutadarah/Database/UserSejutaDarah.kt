@@ -1,4 +1,4 @@
-package com.example.sejutadarah
+package com.example.sejutadarah.Database
 
 data class userSejutaDarah (
     val id : String?,

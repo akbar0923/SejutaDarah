@@ -1,4 +1,4 @@
-package com.example.sejutadarah
+package com.example.sejutadarah.Fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
