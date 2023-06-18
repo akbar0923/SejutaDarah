@@ -38,12 +38,20 @@ class HomeActivity : AppCompatActivity() {
                     switchFragment(ProfileFragment())
                     true
                 }
+                R.id.menu_kosong -> {
+                    // Tambahkan logika yang sesuai dengan menu yang kosong
+                    true
+                }
                 else -> false
             }
         }
 
         // Set the default fragment
         switchFragment(HomeFragment())
+
+        // Mengaktifkan atau menonaktifkan menu kosong
+        val menuKosong = bottomNavigationView.menu.findItem(R.id.menu_kosong)
+        menuKosong.isEnabled = false // Ubah ke true untuk mengaktifkan, false untuk menonaktifkan
     }
 
     private fun switchFragment(fragment: Fragment) {

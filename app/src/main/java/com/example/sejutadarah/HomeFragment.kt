@@ -51,6 +51,7 @@ class HomeFragment : Fragment() {
                 context?.let {
                     Glide.with(it)
                         .load(profileImageUrl)
+                        .placeholder(R.drawable.ic_user) // Foto profil default
                         .into(imageProfile)
                 }
                 textName.text = name

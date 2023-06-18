@@ -23,10 +23,12 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-
+                android:src="@drawable/ic_user"
                 android:scaleType="centerCrop" />
 
             <!-- Nama -->
+
+            <!-- Nomor Identitas -->
             <TextView
                 android:id="@+id/textName"
                 android:layout_width="match_parent"
@@ -34,7 +36,6 @@
                 android:text="Nama Pengguna"
                 android:textSize="18sp" />
 
-            <!-- Nomor Identitas -->
             <TextView
                 android:id="@+id/textIdentity"
                 android:layout_width="match_parent"

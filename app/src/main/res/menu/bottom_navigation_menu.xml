@@ -12,6 +12,7 @@
         android:title="Edukasi" />
 
     <item
+        android:id="@+id/menu_kosong"
         android:title=""/>
     <item
         android:id="@+id/menu_riwayat_donor"
