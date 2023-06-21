@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sejutadarah.Database.userSejutaDarah
 import com.example.sejutadarah.R
@@ -32,6 +34,21 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
+
+        // Recycler View Edukasi View
+        val recyclerViewEdukasi = view.findViewById<RecyclerView>(R.id.rv_edukasi_view)
+
+        val dataEdukasiView = arrayListOf<String>()
+        for (i in 1..50) {
+            dataEdukasiView.add("Item " + i)
+        }
+
+        // buat file adapter kt
+//        val adapter = CustomAdapter (this, dataEdukasiView)
+
+//        recyclerViewEdukasi.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
+//        recyclerViewEdukasi.adapter = adapter
+
 
         // Inisialisasi komponen tampilan
         imageProfile = view.findViewById(R.id.imageProfile)
@@ -71,6 +88,8 @@ class HomeFragment : Fragment() {
                 // Handle error jika terjadi
             }
         })
+
+
 
         return view
     }

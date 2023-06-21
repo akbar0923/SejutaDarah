@@ -131,7 +131,7 @@
                                 app:srcCompat="@drawable/ic_blood" />
 
                             <TextView
-                                android:id="@+id/textView5"
+                                android:id="@+id/textBloodGroup"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -157,7 +157,7 @@
                             app:srcCompat="@drawable/ic_homes" />
 
                         <TextView
-                            android:id="@+id/textView"
+                            android:id="@+id/textRewardPoints"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -171,9 +171,12 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout4"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
             tools:layout_editor_absoluteX="12dp">
 
@@ -188,8 +191,10 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout3">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
