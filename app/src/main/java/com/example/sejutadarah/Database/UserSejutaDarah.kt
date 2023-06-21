@@ -5,6 +5,7 @@ data class userSejutaDarah (
     val fullName : String = "",
     val email : String = "",
     val password : String = "",
+    val userId : String = "",
     val profileImageUrl: String= "",
     val identity : String = "",
     val bloodGroup : String = "",

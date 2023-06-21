@@ -54,8 +54,7 @@ class LoginActivity : AppCompatActivity() {
 
                     } else {
                         // Login gagal
-                        val exception = task.exception
-                        when (exception) {
+                        when (task.exception) {
                             is FirebaseAuthInvalidUserException -> {
                                 Toast.makeText(this, "Akun tidak valid", Toast.LENGTH_SHORT).show()
                             }

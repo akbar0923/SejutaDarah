@@ -1,5 +1,6 @@
 package com.example.sejutadarah
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -43,32 +44,38 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val ref = FirebaseDatabase.getInstance().getReference("userSejutaDarah")
-
-            val userId = ref.push().key
-
-            val user = userSejutaDarah(userId, fullName, email, password, "", "", "", "")
-
-            // Menyimpan data pengguna ke Firebase Realtime Database
-            if (userId != null) {
-                ref.child(userId).setValue(user).addOnCompleteListener{
-                    Toast.makeText(applicationContext, "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
-                }
-            }
-
             // Proses pendaftaran pengguna baru dengan Firebase Authentication
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     if (task.isSuccessful) {
+
+                        val ref = FirebaseDatabase.getInstance().getReference("userSejutaDarah")
+
+                        val id = ref.push().key
+
+                        val user = auth.currentUser
+
+                        val data = userSejutaDarah(id, fullName, email, password,
+                            user?.uid ?: "", "", "", "")
+
+                        // Menyimpan data pengguna ke Firebase Realtime Database
+                        if (id != null) {
+                            ref.child(id).setValue(data).addOnCompleteListener{
+                                Toast.makeText(applicationContext, "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
                         // Pendaftaran berhasil
                         Toast.makeText(this, "Pendaftaran berhasil", Toast.LENGTH_SHORT).show()
 
                         // Lakukan tindakan sesuai kebutuhan, seperti mengarahkan pengguna ke halaman berikutnya
+                        val intent = Intent(this, LoginActivity::class.java)
+                        startActivity(intent)
+                        finish()
 
                     } else {
                         // Pendaftaran gagal
-                        val exception = task.exception
-                        when (exception) {
+                        when (task.exception) {
                             is FirebaseAuthWeakPasswordException -> {
                                 Toast.makeText(
                                     this,

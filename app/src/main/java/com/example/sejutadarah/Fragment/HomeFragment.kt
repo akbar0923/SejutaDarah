@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sejutadarah.Database.userSejutaDarah
 import com.example.sejutadarah.R
@@ -61,26 +59,32 @@ class HomeFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
         database = FirebaseDatabase.getInstance()
-        userRef = database.reference.child("userSejutaDarah").child("-NYCugYDZLRpZBYx_bn1")
+        userRef = database.reference.child("userSejutaDarah")
 
         // Ambil data dari Firebase
         userRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Ambil nilai dari database
-                val user = dataSnapshot.getValue(userSejutaDarah::class.java)
-
-                // Set nilai ke komponen tampilan
-                user?.let {
-                    context?.let { context ->
-                        Glide.with(context)
-                            .load(user.profileImageUrl)
-                            .placeholder(R.drawable.ic_user) // Foto profil default
-                            .into(imageProfile)
+                for (userSnapshot in dataSnapshot.children) {
+                    val user: userSejutaDarah? = userSnapshot.getValue(userSejutaDarah::class.java)
+                    if (user != null) {
+                        if(user.userId == currentUser.uid) {
+                            // Set nilai ke komponen tampilan
+                            user.let {
+                                context?.let { context ->
+                                    Glide.with(context)
+                                        .load(user.profileImageUrl)
+                                        .placeholder(R.drawable.ic_user) // Foto profil default
+                                        .into(imageProfile)
+                                }
+                                textName.text = user.fullName // Mengganti teks dengan nama pengguna
+                                textIdentity.text = user.identity
+                                textBloodGroup.text = user.bloodGroup
+                                textRewardPoints.text = "Reward Poin: ${user.rewardPoints}"
+                            }
+                            break
+                        }
                     }
-                    textName.text = user.fullName // Mengganti teks dengan nama pengguna
-                    textIdentity.text = user.identity
-                    textBloodGroup.text = user.bloodGroup
-                    textRewardPoints.text = "Reward Poin: ${user.rewardPoints}"
                 }
             }
 
