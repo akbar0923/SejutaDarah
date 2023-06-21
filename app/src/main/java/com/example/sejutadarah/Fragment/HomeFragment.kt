@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         // Recycler View Edukasi View
-        val recyclerViewEdukasi = view.findViewById<RecyclerView>(R.id.rv_edukasi_view)
+//        val recyclerViewEdukasi = view.findViewById<RecyclerView>(R.id.rv_edukasi_view)
 
         val dataEdukasiView = arrayListOf<String>()
         for (i in 1..50) {
@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
         database = FirebaseDatabase.getInstance()
-        userRef = database.reference.child("users").child(currentUser.uid)
+        userRef = database.reference.child("userSejutaDarah").child("-NYCugYDZLRpZBYx_bn1")
 
         // Ambil data dari Firebase
         userRef.addValueEventListener(object : ValueEventListener {
