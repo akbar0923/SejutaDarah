@@ -8,11 +8,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.example.sejutadarah.Database.userSejutaDarah
 import com.example.sejutadarah.R
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.*
 
 class HomeFragment : Fragment() {
     private lateinit var imageProfile: ImageView
@@ -21,6 +21,10 @@ class HomeFragment : Fragment() {
     private lateinit var textBloodGroup: TextView
     private lateinit var textRewardPoints: TextView
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var currentUser: FirebaseUser
+    private lateinit var database: FirebaseDatabase
+    private lateinit var userRef: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,28 +40,31 @@ class HomeFragment : Fragment() {
         textBloodGroup = view.findViewById(R.id.textBloodGroup)
         textRewardPoints = view.findViewById(R.id.textRewardPoints)
 
+        // Inisialisasi Firebase
+        auth = FirebaseAuth.getInstance()
+        currentUser = auth.currentUser!!
+        database = FirebaseDatabase.getInstance()
+        userRef = database.reference.child("users").child(currentUser.uid)
+
         // Ambil data dari Firebase
-        val userRef = FirebaseDatabase.getInstance().reference.child("users").child("user_id")
         userRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Ambil nilai dari database
-                val profileImageUrl = dataSnapshot.child("profileImageUrl").value.toString()
-                val name = dataSnapshot.child("name").value.toString()
-                val identity = dataSnapshot.child("identity").value.toString()
-                val bloodGroup = dataSnapshot.child("bloodGroup").value.toString()
-                val rewardPoints = dataSnapshot.child("rewardPoints").value.toString()
+                val user = dataSnapshot.getValue(userSejutaDarah::class.java)
 
                 // Set nilai ke komponen tampilan
-                context?.let {
-                    Glide.with(it)
-                        .load(profileImageUrl)
-                        .placeholder(R.drawable.ic_user) // Foto profil default
-                        .into(imageProfile)
+                user?.let {
+                    context?.let { context ->
+                        Glide.with(context)
+                            .load(user.profileImageUrl)
+                            .placeholder(R.drawable.ic_user) // Foto profil default
+                            .into(imageProfile)
+                    }
+                    textName.text = user.fullName // Mengganti teks dengan nama pengguna
+                    textIdentity.text = user.identity
+                    textBloodGroup.text = user.bloodGroup
+                    textRewardPoints.text = "Reward Poin: ${user.rewardPoints}"
                 }
-                textName.text = name
-                textIdentity.text = identity
-                textBloodGroup.text = bloodGroup
-                textRewardPoints.text = "Reward Poin: $rewardPoints"
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

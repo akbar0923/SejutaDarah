@@ -47,13 +47,13 @@ class RegisterActivity : AppCompatActivity() {
 
             val userId = ref.push().key
 
-            val user = userSejutaDarah(userId, fullName, email, password)
+            val user = userSejutaDarah(userId, fullName, email, password, "", "", "", "")
 
+            // Menyimpan data pengguna ke Firebase Realtime Database
             if (userId != null) {
                 ref.child(userId).setValue(user).addOnCompleteListener{
                     Toast.makeText(applicationContext, "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
                 }
-
             }
 
             // Proses pendaftaran pengguna baru dengan Firebase Authentication
