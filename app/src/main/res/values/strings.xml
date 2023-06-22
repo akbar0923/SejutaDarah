@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">SejutaDarah</string>
+
+    <string name="pilih_golongan_darah">Pilih Golongan Darah</string>
+    <string-array name="golongan_darah">
+        <item>A</item>
+        <item>B</item>
+        <item>AB</item>
+        <item>O</item>
+    </string-array>
+
     <string name="title_activity_dummy_maps">DummyMapsActivity</string>
 </resources>

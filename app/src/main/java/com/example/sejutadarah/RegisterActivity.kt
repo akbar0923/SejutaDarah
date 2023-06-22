@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.sejutadarah.Database.userSejutaDarah
@@ -20,6 +21,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var btnRegister: Button
 
+    private lateinit var tvLogin: TextView
+
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,8 @@ class RegisterActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         btnRegister = findViewById(R.id.btnRegister)
+
+        tvLogin = findViewById(R.id.tvLogin)
 
         btnRegister.setOnClickListener {
             val fullName = etFullName.text.toString().trim()
@@ -107,6 +112,13 @@ class RegisterActivity : AppCompatActivity() {
                         }
                     }
                 }
+
         }
+
+        tvLogin.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
     }
 }
