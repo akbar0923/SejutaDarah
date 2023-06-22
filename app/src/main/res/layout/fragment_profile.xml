@@ -40,6 +40,13 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
+                            <ImageView
+                                android:id="@+id/foto_profile"
+                                android:layout_width="73dp"
+                                android:layout_height="80dp"
+                                tools:layout_editor_absoluteX="167dp"
+                                tools:layout_editor_absoluteY="50dp"
+                                tools:src="@drawable/ic_profile" />
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <ImageView
@@ -53,28 +60,16 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/foto_profile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="80dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:src="@drawable/ic_profile" />
-
                         <TextView
                             android:id="@+id/nama_user"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
                             android:text="Nama Profile"
                             android:textColor="#ffffff"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="@+id/foto_profile"
-                            app:layout_constraintStart_toStartOf="@+id/foto_profile"
-                            app:layout_constraintTop_toBottomOf="@+id/foto_profile" />
+                            tools:layout_editor_absoluteX="147dp"
+                            tools:layout_editor_absoluteY="144dp" />
 
                         <TextView
                             android:id="@+id/textView2"
@@ -124,17 +119,22 @@
                                         android:layout_margin="12dp"
                                         android:background="@drawable/circle_background">
 
-<!--                                        src gambar nya disesuaikan -->
-                                        <ImageView
-                                            android:id="@+id/imageView3"
+                                        <TextView
+                                            android:id="@+id/GolonganDarah_user"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_launcher_foreground"
+                                            android:text="A"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            android:textColor="@color/white"
+                                            android:fontFamily="@font/poppins_semibold"
+                                            android:textSize="30dp"
+
+                                            />
                                     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                                     <TextView
                                         android:id="@+id/textView3"
@@ -145,7 +145,9 @@
                                         android:textAlignment="center"
                                         android:textColor="#000000"
                                         android:textSize="13sp"
-                                        android:textStyle="bold" />
+                                        android:textStyle="bold"
+
+                                        />
                                 </LinearLayout>
 
                                 <LinearLayout
@@ -164,16 +166,20 @@
                                         android:layout_margin="12dp"
                                         android:background="@drawable/circle_background">
 
-                                        <!--    src gambar nya disesuaikan -->
-                                        <ImageView
-                                            android:id="@+id/imageView4"
+                                        <TextView
+                                            android:id="@+id/gender_user"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_launcher_foreground"
+                                            android:text="L"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            android:textColor="@color/white"
+                                            android:fontFamily="@font/poppins_semibold"
+                                            android:textSize="30dp"
+
+                                            />
                                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                                     <TextView
@@ -204,16 +210,19 @@
                                         android:layout_margin="12dp"
                                         android:background="@drawable/circle_background">
 
-                                        <!-- src gambar nya disesuaikan -->
-                                        <ImageView
-                                            android:id="@+id/imageView5"
+                                        <TextView
+                                            android:id="@+id/textView14"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:src="@drawable/ic_launcher_foreground"
+                                            android:fontFamily="@font/poppins_semibold"
+                                            android:text="200"
+                                            android:textColor="@color/white"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent" />
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            android:textSize="13dp"
+                                            />
                                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                                     <TextView
@@ -221,7 +230,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="8dp"
-                                        android:text="Android"
+                                        android:text="POIN"
                                         android:textAlignment="center"
                                         android:textColor="#000000"
                                         android:textSize="13sp"
@@ -284,7 +293,7 @@
                                     android:textSize="18sp" />
 
                                 <TextView
-                                    android:id="@+id/textView9"
+                                    android:id="@+id/email_user"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
