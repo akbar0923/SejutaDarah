@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SejutaDarah</string>
+    <string name="title_activity_dummy_maps">DummyMapsActivity</string>
 </resources>
