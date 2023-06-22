@@ -32,6 +32,16 @@
         android:hint="Password"
         android:inputType="textPassword" />
 
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="No Registrasi PMI"
+        android:inputType="text"/>
+
+
     <Button
         android:id="@+id/btnRegister"
         android:layout_width="match_parent"
