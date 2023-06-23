@@ -9,6 +9,7 @@ data class userSejutaDarah (
     val profileImageUrl: String= "",
     val identity : String = "",
     val bloodGroup : String = "",
-    val rewardPoints : String = ""
+    val rewardPoints : String = "",
+    val nik : String = ""
 
 )

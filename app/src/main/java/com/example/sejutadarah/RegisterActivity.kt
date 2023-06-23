@@ -1,9 +1,9 @@
 package com.example.sejutadarah
-
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +20,8 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnRegister: Button
+    private lateinit var etNik: EditText
+    private lateinit var spinnerGolonganDarah: Spinner
 
     private lateinit var tvLogin: TextView
 
@@ -35,6 +37,8 @@ class RegisterActivity : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         btnRegister = findViewById(R.id.btnRegister)
+        etNik = findViewById(R.id.etNIK)
+        spinnerGolonganDarah = findViewById(R.id.spinnerGolonganDarah)
 
         tvLogin = findViewById(R.id.tvLogin)
 
@@ -42,9 +46,11 @@ class RegisterActivity : AppCompatActivity() {
             val fullName = etFullName.text.toString().trim()
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
+            val nik = etNik.text.toString().trim()
+            val bloodGroup = spinnerGolonganDarah.selectedItem.toString()
 
             // Validasi inputan
-            if (fullName.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() ||bloodGroup.isEmpty()|| nik.isEmpty()) {
                 Toast.makeText(this, "Harap isi semua field", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -60,13 +66,27 @@ class RegisterActivity : AppCompatActivity() {
 
                         val user = auth.currentUser
 
-                        val data = userSejutaDarah(id, fullName, email, password,
-                            user?.uid ?: "", "", "", "")
+                        val data = userSejutaDarah(
+                            id,
+                            fullName,
+                            email,
+                            password,
+                            user?.uid ?: "",
+                            "",
+                            "",
+                            bloodGroup,
+                            "",
+                            nik
+                        )
 
                         // Menyimpan data pengguna ke Firebase Realtime Database
                         if (id != null) {
-                            ref.child(id).setValue(data).addOnCompleteListener{
-                                Toast.makeText(applicationContext, "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                            ref.child(id).setValue(data).addOnCompleteListener {
+                                Toast.makeText(
+                                    applicationContext,
+                                    "Data berhasil Ditambahkan",
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
 
@@ -75,7 +95,8 @@ class RegisterActivity : AppCompatActivity() {
 
                         // Lakukan tindakan sesuai kebutuhan, seperti mengarahkan pengguna ke halaman berikutnya
                         val intent = Intent(this, LoginActivity::class.java)
-                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
+                        intent.flags =
+                            Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                         finish()
 
@@ -93,34 +114,35 @@ class RegisterActivity : AppCompatActivity() {
                             is FirebaseAuthInvalidCredentialsException -> {
                                 Toast.makeText(
                                     this,
-                                    "Email tidak valid",
+                                    "Format email tidak valid",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                             is FirebaseAuthUserCollisionException -> {
                                 Toast.makeText(
                                     this,
-                                    "Akun dengan email tersebut sudah terdaftar",
+                                    "Email sudah terdaftar",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                             else -> {
                                 Toast.makeText(
                                     this,
-                                    "Pendaftaran gagal. Silakan coba lagi.",
+                                    "Pendaftaran gagal",
                                     Toast.LENGTH_SHORT
                                 ).show()
                             }
                         }
                     }
                 }
-
         }
 
         tvLogin.setOnClickListener {
+            // Tindakan saat pengguna mengklik tombol login
             val intent = Intent(this, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
+            finish()
         }
-
     }
 }

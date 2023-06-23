@@ -52,28 +52,6 @@
                             android:textColor="@color/green_500"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="NOMOR INDUK KEPENDUDUKAN"
-                            android:textAlignment="center"
-                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
-                            android:textColor="@color/grey_40" />
-
-
-                        <EditText
-                            android:id="@+id/etNIK"
-                            android:layout_width="match_parent"
-                            android:layout_height="48dp"
-                            android:layout_marginLeft="-4dp"
-                            android:layout_marginRight="-4dp"
-                            android:layout_marginBottom="20dp"
-                            android:hint="NIK"
-                            android:inputType="text"
-                            android:maxLength="50"
-                            android:maxLines="1"
-                            android:textColor="@color/grey_80"
-                            />
 
 
                         <TextView
@@ -162,23 +140,45 @@
                         </LinearLayout>
 
                         <!--  Data Tambahan   -->
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="NO. REGISTRASI PMI"-->
+<!--                            android:textAlignment="center"-->
+<!--                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"-->
+<!--                            android:textColor="@color/grey_40" />-->
+
+
+<!--                        <EditText-->
+<!--                            android:id="@+id/etGolDar"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="48dp"-->
+<!--                            android:layout_marginLeft="-4dp"-->
+<!--                            android:layout_marginRight="-4dp"-->
+<!--                            android:layout_marginBottom="20dp"-->
+<!--                            android:hint="No. Reg"-->
+<!--                            android:inputType="text"-->
+<!--                            android:maxLength="50"-->
+<!--                            android:maxLines="1"-->
+<!--                            android:textColor="@color/grey_80"-->
+<!--                            />-->
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="NO. REGISTRASI PMI"
+                            android:text="NOMOR INDUK KEPENDUDUKAN"
                             android:textAlignment="center"
                             android:textAppearance="@style/Base.TextAppearance.AppCompat.Caption"
                             android:textColor="@color/grey_40" />
 
 
                         <EditText
-                            android:id="@+id/etGolDar"
+                            android:id="@+id/etNIK"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:layout_marginLeft="-4dp"
                             android:layout_marginRight="-4dp"
                             android:layout_marginBottom="20dp"
-                            android:hint="No. Reg"
+                            android:hint="NIK"
                             android:inputType="text"
                             android:maxLength="50"
                             android:maxLines="1"

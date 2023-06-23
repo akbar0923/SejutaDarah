@@ -258,12 +258,12 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
-                                    android:text="No Registrasi PMI"
+                                    android:text="NIK"
                                     android:textColor="#FF910012"
                                     android:textSize="18sp" />
 
                                 <TextView
-                                    android:id="@+id/textView7"
+                                    android:id="@+id/nik_user"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
