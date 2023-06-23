@@ -19,6 +19,7 @@ class ProfileFragment : Fragment() {
     private lateinit var textName: TextView
     private lateinit var emailName: TextView
 
+
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var database: FirebaseDatabase

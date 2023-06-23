@@ -40,13 +40,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent">
 
-                            <ImageView
-                                android:id="@+id/foto_profile"
-                                android:layout_width="73dp"
-                                android:layout_height="80dp"
-                                tools:layout_editor_absoluteX="167dp"
-                                tools:layout_editor_absoluteY="50dp"
-                                tools:src="@drawable/ic_profile" />
+
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                         <ImageView
@@ -60,6 +54,17 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <ImageView
+                            android:id="@+id/foto_profile"
+                            android:layout_width="73dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/user_profile"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="48dp"
+                            app:circularflow_radiusInDP="20dp"
+                            />
+
                         <TextView
                             android:id="@+id/nama_user"
                             android:layout_width="wrap_content"
@@ -68,8 +73,9 @@
                             android:textColor="#ffffff"
                             android:textSize="20sp"
                             android:textStyle="bold"
-                            tools:layout_editor_absoluteX="147dp"
-                            tools:layout_editor_absoluteY="144dp" />
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/foto_profile" />
 
                         <TextView
                             android:id="@+id/textView2"

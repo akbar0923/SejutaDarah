@@ -75,8 +75,10 @@ class RegisterActivity : AppCompatActivity() {
 
                         // Lakukan tindakan sesuai kebutuhan, seperti mengarahkan pengguna ke halaman berikutnya
                         val intent = Intent(this, LoginActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
                         finish()
+
 
                     } else {
                         // Pendaftaran gagal
