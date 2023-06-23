@@ -10,5 +10,4 @@ data class userSejutaDarah (
     val identity : String = "",
     val bloodGroup : String = "",
     val rewardPoints : String = ""
-
 )
