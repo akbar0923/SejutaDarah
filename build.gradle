@@ -1,10 +1,16 @@
 buildscript {
+    ext {
+        kotlin_version = '1.9.0-RC'
+    }
     repositories {
         google() // Repositori Maven dari Google
         mavenCentral() // Repositori Maven Central
     }
     dependencies {
-        classpath 'com.google.gms:google-services:4.3.15' // Tambahkan dependensi untuk plugin Google services Gradle
+        classpath 'com.google.gms:google-services:4.3.15'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.android.tools.build:gradle:7.0.4'
+        // Tambahkan dependensi untuk plugin Google services Gradle
         classpath "com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1"
     }
 }

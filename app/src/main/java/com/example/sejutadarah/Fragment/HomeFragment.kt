@@ -1,5 +1,6 @@
 package com.example.sejutadarah.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.sejutadarah.Database.InformasiClass
 import com.example.sejutadarah.Database.userSejutaDarah
+import com.example.sejutadarah.InformasiAdapter
+import com.example.sejutadarah.InformasiDetail
 import com.example.sejutadarah.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -26,26 +32,17 @@ class HomeFragment : Fragment() {
     private lateinit var database: FirebaseDatabase
     private lateinit var userRef: DatabaseReference
 
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: InformasiAdapter
+    private lateinit var infoList: List<InformasiClass>
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
-
-        // Recycler View Edukasi View
-//        val recyclerViewEdukasi = view.findViewById<RecyclerView>(R.id.rv_edukasi_view)
-
-        val dataEdukasiView = arrayListOf<String>()
-        for (i in 1..50) {
-            dataEdukasiView.add("Item " + i)
-        }
-
-        // buat file adapter kt
-//        val adapter = CustomAdapter (this, dataEdukasiView)
-
-//        recyclerViewEdukasi.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false)
-//        recyclerViewEdukasi.adapter = adapter
 
 
         // Inisialisasi komponen tampilan
@@ -54,6 +51,20 @@ class HomeFragment : Fragment() {
         textIdentity = view.findViewById(R.id.textIdentity)
         textBloodGroup = view.findViewById(R.id.textBloodGroup)
         textRewardPoints = view.findViewById(R.id.textRewardPoints)
+
+        // Inisialisasi komponen recycle view
+        recyclerView = view.findViewById(R.id.rvInformasi)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+
+        val data = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+        adapter = InformasiAdapter(data)
+        recyclerView.adapter = adapter
+
+
+
+//        val data = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
+//        adapter = InformasiAdapter(data)
+//        recyclerView.adapter = adapter
 
         // Inisialisasi Firebase
         auth = FirebaseAuth.getInstance()
@@ -97,4 +108,23 @@ class HomeFragment : Fragment() {
 
         return view
     }
+
+    companion object {
+        val INTENT_PARCELABLE = "OBJECT_INTENT"
+
+    }
+
+//    private fun dataInitialize() {
+//        infoList = ListOf<InformasiClass>(
+//            InformasiClass(
+//                infoImg = ,
+//                infoJudul = "Judul",
+//
+//
+//
+//            )
+//        )
+
+
+
 }

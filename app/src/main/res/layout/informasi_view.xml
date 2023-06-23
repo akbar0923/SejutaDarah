@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="16dp"
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="16dp"
     android:layout_marginRight="19dp"
     android:layout_marginBottom="8dp"
     card_view:cardElevation="10dp"
@@ -20,7 +20,7 @@
 
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/informasi_image"
             android:layout_width="160dp"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
@@ -29,7 +29,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/food_name"
+            android:id="@+id/judul_informasi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -37,16 +37,16 @@
             android:layout_marginEnd="1dp"
             android:layout_marginRight="16dp"
 
-            android:layout_toStartOf="@+id/image"
+            android:layout_toStartOf="@+id/informasi_image"
             android:textSize="22sp"
             android:textStyle="bold"
             tools:text="Nama Konten" />
 
         <TextView
-            android:id="@+id/food_price"
+            android:id="@+id/sumber_informasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/food_name"
+            android:layout_below="@id/judul_informasi"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="6dp"
@@ -56,10 +56,10 @@
             tools:text="sumber informasi" />
 
         <TextView
-            android:id="@+id/food_rating"
+            android:id="@+id/isi_informasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/food_price"
+            android:layout_below="@id/sumber_informasi"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
@@ -67,22 +67,6 @@
             android:layout_marginRight="16dp"
             android:ellipsize="end"
             tools:text="penjelasan konten" />
-
-        <RatingBar
-            android:id="@+id/ratingbar"
-            style="?android:ratingBarStyleSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/food_rating"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="1dp"
-            android:isIndicator="true"
-            android:numStars="5"
-            android:progressBackgroundTint="@color/black"
-            android:progressTint="@android:color/holo_orange_dark"
-            android:rating="0.0"
-            android:stepSize="0.5" />
 
     </RelativeLayout>
 
