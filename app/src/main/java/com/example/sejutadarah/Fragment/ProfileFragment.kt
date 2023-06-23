@@ -17,6 +17,10 @@ import com.google.firebase.database.*
 class ProfileFragment : Fragment() {
     private lateinit var imageProfile: ImageView
     private lateinit var textName: TextView
+    private lateinit var emailName: TextView
+    private lateinit var golongandarah: TextView
+    private lateinit var nik: TextView
+
 
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
@@ -33,7 +37,9 @@ class ProfileFragment : Fragment() {
         // Inisialisasi komponen tampilan
         imageProfile = view.findViewById(R.id.foto_profile)
         textName = view.findViewById(R.id.nama_user)
-
+        emailName = view.findViewById(R.id.email_user)
+        golongandarah = view.findViewById(R.id.GolonganDarah_user)
+        nik = view.findViewById(R.id.nik_user)
 
         // Inisialisasi Firebase
         auth = FirebaseAuth.getInstance()
@@ -58,6 +64,9 @@ class ProfileFragment : Fragment() {
                                         .into(imageProfile)
                                 }
                                 textName.text = user.fullName // Mengganti teks dengan nama pengguna
+                                emailName.text = user.email // Mengganti email dengan email pengguna
+                                golongandarah.text = user.bloodGroup // Mengganti email dengan email pengguna
+                                nik.text = user.nik // Mengganti email dengan email pengguna
 
                             }
                             break

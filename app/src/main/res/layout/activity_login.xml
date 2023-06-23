@@ -23,7 +23,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/spacing_large"
             android:layout_marginBottom="@dimen/spacing_mlarge"
-            android:src="@drawable/logo_apps"
+            android:src="@drawable/logo"
             app:tint="@android:color/white" />
 
         <androidx.cardview.widget.CardView
