@@ -61,11 +61,6 @@ class HomeFragment : Fragment() {
         recyclerView.adapter = adapter
 
 
-
-//        val data = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
-//        adapter = InformasiAdapter(data)
-//        recyclerView.adapter = adapter
-
         // Inisialisasi Firebase
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
