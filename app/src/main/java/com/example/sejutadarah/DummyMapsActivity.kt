@@ -38,6 +38,7 @@ class DummyMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         binding = ActivityDummyMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
