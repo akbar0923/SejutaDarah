@@ -22,6 +22,7 @@ class RiwayatDonorAdapter(private val dataRiwayat: List<String>) : RecyclerView.
         val item = dataRiwayat[position]
         holder.riwayatTanggal.text = item
         holder.riwayatTempat.text = item
+        holder.riwayatGambar.setImageResource(R.drawable.ic_calender)
     }
 
     override fun getItemCount(): Int {
@@ -31,6 +32,7 @@ class RiwayatDonorAdapter(private val dataRiwayat: List<String>) : RecyclerView.
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val riwayatTanggal: TextView = itemView.findViewById(R.id.riwayat_tanggal_donor)
         val riwayatTempat : TextView = itemView.findViewById(R.id.riwayat_tempat)
+        val riwayatGambar : ImageView = itemView.findViewById(R.id.riwayat_image)
 
     }
 

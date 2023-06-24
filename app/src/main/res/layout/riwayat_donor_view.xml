@@ -19,14 +19,6 @@
         android:padding="20dp">
 
 
-        <ImageView
-            android:id="@+id/riwayat_image"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/ic_blood" />
-
         <TextView
             android:id="@+id/riwayat_tanggal_donor"
             android:layout_width="match_parent"
@@ -53,6 +45,14 @@
             android:layout_alignEnd="@+id/riwayat_tanggal_donor"
             android:ellipsize="end"
             tools:text="Tempat Donor" />
+
+        <ImageView
+            android:id="@+id/riwayat_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentLeft="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/ic_calender" />
 
 
     </RelativeLayout>

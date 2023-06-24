@@ -1,5 +1,7 @@
 <!-- fragment_riwayat_donor.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,30 +11,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Riwayat Donor"
+        android:fontFamily="@font/poppins_semibold"
         android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="10dp"
         android:layout_gravity="center_horizontal" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewRiwayatDonor"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
-        tools:listitem="@layout/riwayat_donor_view"
-        android:clipToPadding="false"
-        android:scrollbars="vertical"
-        />
+        android:layout_weight="1">
 
-    <Button
-        android:id="@+id/btnTambahRiwayatDonor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tambah Riwayat Donor"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewRiwayatDonor"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:scrollbars="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/riwayat_donor_view" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
