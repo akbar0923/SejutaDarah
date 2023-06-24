@@ -21,7 +21,7 @@ class InformasiAdapter(private val data: List<String>) : RecyclerView.Adapter<In
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.infoJudul.text = item
-        holder.infoSumber.text = item
+//        holder.infoSumber.text = item
         holder.infoIsi.text = item
     }
 
@@ -31,7 +31,7 @@ class InformasiAdapter(private val data: List<String>) : RecyclerView.Adapter<In
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val infoJudul: TextView = itemView.findViewById(R.id.judul_informasi)
-        val infoSumber : TextView = itemView.findViewById(R.id.sumber_informasi)
+//        val infoSumber : TextView = itemView.findViewById(R.id.sumber_informasi)
         val infoIsi : TextView = itemView.findViewById(R.id.isi_informasi)
 
     }

@@ -42,24 +42,12 @@
             android:textStyle="bold"
             tools:text="Nama Konten" />
 
-        <TextView
-            android:id="@+id/sumber_informasi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/judul_informasi"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="6dp"
-            android:layout_marginEnd="104dp"
-            android:layout_marginRight="16dp"
-            android:ellipsize="end"
-            tools:text="sumber informasi" />
 
         <TextView
             android:id="@+id/isi_informasi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/sumber_informasi"
+            android:layout_below="@id/judul_informasi"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
