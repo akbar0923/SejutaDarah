@@ -107,12 +107,12 @@
                                 android:text="Gol :" />
 
                             <TextView
-                                android:id="@+id/textView3"
+                                android:id="@+id/darahuser"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="5dp"
                                 android:layout_weight="1"
-                                android:text="A+" />
+                                android:text="A" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -199,7 +199,6 @@
                 android:id="@+id/rvInformasi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="16dp"
                 android:scrollbars="horizontal"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:layout_editor_absoluteX="16dp"
