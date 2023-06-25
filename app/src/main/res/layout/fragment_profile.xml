@@ -59,11 +59,11 @@
                             android:layout_width="73dp"
                             android:layout_height="80dp"
                             android:src="@drawable/user_profile"
+                            android:layout_marginTop="48dp"
+                            app:circularflow_radiusInDP="20dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            tools:layout_editor_absoluteY="48dp"
-                            app:circularflow_radiusInDP="20dp"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/nama_user"
@@ -101,8 +101,10 @@
                             android:orientation="vertical"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2">
+                            app:layout_constraintTop_toBottomOf="@+id/textView2"
+                            app:layout_constraintVertical_bias="1.0">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -129,14 +131,14 @@
                                             android:id="@+id/GolonganDarah_user"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_semibold"
                                             android:text="A"
+                                            android:textColor="@color/white"
+                                            android:textSize="30dp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent"
-                                            android:textColor="@color/white"
-                                            android:fontFamily="@font/poppins_semibold"
-                                            android:textSize="30dp"
 
                                             />
                                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -176,14 +178,14 @@
                                             android:id="@+id/gender_user"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
+                                            android:fontFamily="@font/poppins_semibold"
                                             android:text="L"
+                                            android:textColor="@color/white"
+                                            android:textSize="30dp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
                                             app:layout_constraintTop_toTopOf="parent"
-                                            android:textColor="@color/white"
-                                            android:fontFamily="@font/poppins_semibold"
-                                            android:textSize="30dp"
 
                                             />
                                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -217,18 +219,17 @@
                                         android:background="@drawable/circle_background">
 
                                         <TextView
-                                            android:id="@+id/textView14"
+                                            android:id="@+id/textView1"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
                                             android:fontFamily="@font/poppins_semibold"
                                             android:text="200"
                                             android:textColor="@color/white"
+                                            android:textSize="20dp"
                                             app:layout_constraintBottom_toBottomOf="parent"
                                             app:layout_constraintEnd_toEndOf="parent"
                                             app:layout_constraintStart_toStartOf="parent"
-                                            app:layout_constraintTop_toTopOf="parent"
-                                            android:textSize="13dp"
-                                            />
+                                            app:layout_constraintTop_toTopOf="parent" />
                                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                                     <TextView

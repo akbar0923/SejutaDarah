@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.sejutadarah.Database.article
 import com.example.sejutadarah.Database.InformasiClass
 import com.example.sejutadarah.Database.userSejutaDarah
 import com.example.sejutadarah.InformasiAdapter
@@ -24,7 +25,7 @@ class HomeFragment : Fragment() {
     private lateinit var imageProfile: ImageView
     private lateinit var textName: TextView
     private lateinit var textIdentity: TextView
-    private lateinit var textBloodGroup: TextView
+    private lateinit var golongandarah: TextView
     private lateinit var textRewardPoints: TextView
 
     private lateinit var auth: FirebaseAuth
@@ -35,6 +36,8 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: InformasiAdapter
     private lateinit var infoList: List<InformasiClass>
+    private lateinit var articleRef: DatabaseReference
+
 
 
     override fun onCreateView(
@@ -44,28 +47,28 @@ class HomeFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
-
         // Inisialisasi komponen tampilan
         imageProfile = view.findViewById(R.id.imageProfile)
         textName = view.findViewById(R.id.textName)
         textIdentity = view.findViewById(R.id.textIdentity)
-        textBloodGroup = view.findViewById(R.id.textBloodGroup)
         textRewardPoints = view.findViewById(R.id.textRewardPoints)
+        golongandarah = view.findViewById(R.id.darahuser)
 
-        // Inisialisasi komponen recycle view
+        // Inisialisasi komponen recycler view
+        dataInitialize()
         recyclerView = view.findViewById(R.id.rvInformasi)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        val data = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5")
-        adapter = InformasiAdapter(data)
+        adapter = InformasiAdapter()
         recyclerView.adapter = adapter
-
 
         // Inisialisasi Firebase
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
         database = FirebaseDatabase.getInstance()
         userRef = database.reference.child("userSejutaDarah")
+        articleRef = database.reference.child("article")
+
 
         // Ambil data dari Firebase
         userRef.addValueEventListener(object : ValueEventListener {
@@ -74,7 +77,7 @@ class HomeFragment : Fragment() {
                 for (userSnapshot in dataSnapshot.children) {
                     val user: userSejutaDarah? = userSnapshot.getValue(userSejutaDarah::class.java)
                     if (user != null) {
-                        if(user.userId == currentUser.uid) {
+                        if (user.userId == currentUser.uid) {
                             // Set nilai ke komponen tampilan
                             user.let {
                                 context?.let { context ->
@@ -85,7 +88,7 @@ class HomeFragment : Fragment() {
                                 }
                                 textName.text = user.fullName // Mengganti teks dengan nama pengguna
                                 textIdentity.text = user.identity
-                                textBloodGroup.text = user.bloodGroup
+                                golongandarah.text = user.bloodGroup
                                 textRewardPoints.text = "Reward Poin: ${user.rewardPoints}"
                             }
                             break
@@ -99,27 +102,52 @@ class HomeFragment : Fragment() {
             }
         })
 
+//      return view
 
+        // Ambil data dari Firebase
+        articleRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val articleList = mutableListOf<article>()
+                for (articleSnapshot in dataSnapshot.children) {
+                    val article: article? = articleSnapshot.getValue(article::class.java)
+                    article?.let {
+                        articleList.add(article)
+                    }
+                }
+                adapter.setData(articleList)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                // Handle error jika terjadi
+            }
+        })
 
         return view
     }
 
-    companion object {
-        val INTENT_PARCELABLE = "OBJECT_INTENT"
+    private fun dataInitialize(){
+        // Mengatur data informasi untuk ditampilkan pada adapter
 
+        infoList = listOf<InformasiClass>(
+            InformasiClass(
+                    R.drawable.ic_user,
+                    infoJudul = "Judul 1",
+                    infoSumber = "adasadsada",
+                    infoIsi = "Deskripsi 1"
+                ),
+            InformasiClass(
+                        R.drawable.ic_home,
+                        infoJudul = "Judul 2",
+                        infoSumber = "adsadadasd",
+                        infoIsi = "Deskripsi 2"
+                    )
+
+        )
+
+        // ...
     }
 
-//    private fun dataInitialize() {
-//        infoList = ListOf<InformasiClass>(
-//            InformasiClass(
-//                infoImg = ,
-//                infoJudul = "Judul",
-//
-//
-//
-//            )
-//        )
-
-
-
+    companion object {
+        val INTENT_PARCELABLE = "OBJECT_INTENT"
+    }
 }

@@ -1,73 +1,66 @@
+// InformasiAdapter.kt
 package com.example.sejutadarah
 
-import android.content.Context
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sejutadarah.Database.InformasiClass
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.sejutadarah.Database.article
+import com.squareup.picasso.Picasso
 
-class InformasiAdapter(private val data: List<String>) : RecyclerView.Adapter<InformasiAdapter.ViewHolder>() {
+class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.informasi_view, parent, false)
-        return ViewHolder(view)
+    private val articleList = mutableListOf<article>()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformasiViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.informasi_view, parent, false)
+        return InformasiViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
-        holder.infoJudul.text = item
-//        holder.infoSumber.text = item
-        holder.infoIsi.text = item
+    override fun onBindViewHolder(holder: InformasiViewHolder, position: Int) {
+        val article = articleList[position]
+        holder.bindItem(article)
     }
 
     override fun getItemCount(): Int {
-        return data.size
+        return articleList.size
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val infoJudul: TextView = itemView.findViewById(R.id.judul_informasi)
-//        val infoSumber : TextView = itemView.findViewById(R.id.sumber_informasi)
-        val infoIsi : TextView = itemView.findViewById(R.id.isi_informasi)
-
+    fun setData(data: List<article>) {
+        articleList.clear()
+        articleList.addAll(data)
+        notifyDataSetChanged()
     }
 
+    inner class InformasiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val imageProfile: ImageView = itemView.findViewById(R.id.informasi_image)
+        private val judul: TextView = itemView.findViewById(R.id.judul_informasi)
+        private val deskripsi: TextView = itemView.findViewById(R.id.isi_informasi)
+
+        fun bindItem(article: article) {
+//            Glide.with(itemView.context)
+//                .load(article.foto)
+//                .placeholder(R.drawable.ic_user) // Placeholder gambar default
+//                .transition(DrawableTransitionOptions.withCrossFade())
+//                .into(imageProfile)
+
+            Picasso.get()
+                .load(article.foto)
+                .placeholder(R.drawable.logo) // Gambar placeholder
+                .into(imageProfile)
+
+            judul.text = article.judul
+            judul.maxLines = 2
+            judul.ellipsize = TextUtils.TruncateAt.END
+
+            deskripsi.text = article.deskripsi
+            deskripsi.maxLines = 6 // Mengatur maksimum 2 baris untuk deskripsi
+            deskripsi.ellipsize = TextUtils.TruncateAt.END // Menambahkan ellipsis jika teks terpotong
+        }
+    }
 }
-//    class InformasiViewHolder (view: View) : RecyclerView.ViewHolder(view) {
-//        val infoImg = view.findViewById<ImageView>(R.id.informasi_image)
-//        val infoJudul = view.findViewById<TextView>(R.id.judul_informasi)
-//        val infoSumber = view.findViewById<TextView>(R.id.sumber_informasi)
-//        val infoIsi = view.findViewById<TextView>(R.id.isi_informasi)
-//
-//        fun bindView(informasi: InformasiClass, listener: (InformasiClass) -> Unit){
-//
-//            infoImg.setImageResource(informasi.infoImg)
-//            infoJudul.text = informasi.infoJudul
-//            infoSumber.text = informasi.infoSumber
-//            infoIsi.text = informasi.infoIsi
-//            itemView.setOnClickListener{
-//                (listener(informasi))
-//            }
-//        }
-
-
-
-//    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformasiViewHolder {
-//        return InformasiViewHolder(
-//            LayoutInflater.from(context).inflate(R.layout.informasi_view, parent, false)
-//        )
-//    }
-//
-//    override fun onBindViewHolder(holder: InformasiViewHolder, position: Int) {
-//        holder.bindView(informasi[position], listener)
-//    }
-//
-//    override fun getItemCount(): Int = informasi.size
-
-
-
-
