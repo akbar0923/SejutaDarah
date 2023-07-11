@@ -1,5 +1,7 @@
 package com.example.sejutadarah.Fragment
 
+import android.R.attr.duration
+
 import android.Manifest
 import android.R.attr.duration
 import android.annotation.SuppressLint
@@ -31,7 +33,7 @@ import com.example.sejutadarah.DonorConnectActivity
 import com.example.sejutadarah.DummyMapsActivity
 import com.example.sejutadarah.HomeActivity
 import com.example.sejutadarah.R
-import com.example.sejutadarah.Service.FCMSender
+import com.example.sejutadarah.TiketPaymentActivity
 import com.example.sejutadarah.databinding.FragmentDonorConnectBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -45,10 +47,40 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import java.util.Locale
 
-
+//import androidx.recyclerview.widget.LinearLayoutManager
+//import androidx.recyclerview.widget.RecyclerView
+//import com.example.sejutadarah.Database.DonorConnect
+//import com.example.sejutadarah.Database.NotificationMessage
+//import com.example.sejutadarah.Database.Token
+//import com.example.sejutadarah.DonorConnectActivity
+//import com.example.sejutadarah.DummyMapsActivity
+//import com.example.sejutadarah.R
+//import com.example.sejutadarah.Service.FCMSender
+//import com.example.sejutadarah.databinding.FragmentDonorConnectBinding
+//import com.google.android.material.color.utilities.Score.score
+//import com.google.firebase.auth.FirebaseAuth
+//import com.google.firebase.auth.ktx.auth
+//import com.google.firebase.database.DataSnapshot
+//import com.google.firebase.database.DatabaseError
+//import com.google.firebase.database.DatabaseReference
+//import com.google.firebase.database.FirebaseDatabase
+//import com.google.firebase.database.Query
+//import com.google.firebase.database.ValueEventListener
+//import com.google.firebase.database.ktx.database
+//import com.google.firebase.ktx.Firebase
+//import okhttp3.Call
+//import okhttp3.Callback
+//import okhttp3.Response
+//import java.io.IOException
+//
+//
 class DonorConnectFragment : Fragment() {
 
+    private lateinit var btnTiketPayment: CardView
+
     private var _binding: FragmentDonorConnectBinding? = null
+
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -57,6 +89,11 @@ class DonorConnectFragment : Fragment() {
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private val permissionId = 2
 
+    //    private var adapter = DonorConnectAdapter()
+//    private lateinit var database: DatabaseReference
+//    private var key: String? = null
+//    private var isLastPage = false
+//
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -73,6 +110,11 @@ class DonorConnectFragment : Fragment() {
 
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         auth = FirebaseAuth.getInstance()
+        
+        btnTiketPayment.setOnClickListener {
+            val intent = Intent(context, TiketPaymentActivity::class.java) // ganti tujuan tombol
+            startActivity(intent)
+        }
 
         binding.btnCariDonorConnect.setOnClickListener {
             addData()

@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +18,11 @@ import com.example.sejutadarah.Database.InformasiClass
 import com.example.sejutadarah.Database.userSejutaDarah
 import com.example.sejutadarah.InformasiAdapter
 import com.example.sejutadarah.InformasiDetail
+import com.example.sejutadarah.LoginActivity
 import com.example.sejutadarah.R
+import com.example.sejutadarah.RegisterActivity
+import com.example.sejutadarah.TiketPaymentActivity
+import com.example.sejutadarah.TukarPoinActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -27,6 +33,11 @@ class HomeFragment : Fragment() {
     private lateinit var textIdentity: TextView
     private lateinit var golongandarah: TextView
     private lateinit var textRewardPoints: TextView
+
+    private lateinit var btnTukarPoin: CardView
+    private lateinit var btnTiketPayment: CardView
+    private lateinit var btnRiwayatDonor: CardView
+
 
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
@@ -53,6 +64,10 @@ class HomeFragment : Fragment() {
         textIdentity = view.findViewById(R.id.textIdentity)
         textRewardPoints = view.findViewById(R.id.textRewardPoints)
         golongandarah = view.findViewById(R.id.darahuser)
+        btnTukarPoin = view.findViewById(R.id.btn_tukarPoin)
+        btnTiketPayment = view.findViewById(R.id.btn_tiketPayment)
+        btnRiwayatDonor = view.findViewById(R.id.btn_riwayatDonor)
+
 
         // Inisialisasi komponen recycler view
         dataInitialize()
@@ -121,6 +136,25 @@ class HomeFragment : Fragment() {
                 // Handle error jika terjadi
             }
         })
+
+        btnTukarPoin.setOnClickListener {
+            val intent = Intent(context, TukarPoinActivity::class.java) // ganti tujuan tombol
+            startActivity(intent)
+        }
+
+        btnTiketPayment.setOnClickListener {
+            val intent = Intent(context, TiketPaymentActivity::class.java) // ganti tujuan tombol
+            startActivity(intent)
+        }
+
+//        btnRiwayatDonor.setOnClickListener {
+//            val riwayatDonorFragment = RiwayatDonorFragment()
+//            requireActivity().supportFragmentManager.beginTransaction()
+//                .replace(R.id.fragment_rd_container, riwayatDonorFragment)
+//                .addToBackStack(null)
+//                .commit()
+//        }
+
 
         return view
     }
