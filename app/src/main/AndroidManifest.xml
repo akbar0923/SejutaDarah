@@ -63,8 +63,6 @@
 
             <!-- Tambahkan intent-filter sesuai kebutuhan -->
         </activity>
-        <activity android:name=".DummyMapsActivity" />
-
 
         <service
             android:name=".Service.MyFirebaseMessagingService"

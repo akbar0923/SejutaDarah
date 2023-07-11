@@ -1,6 +1,7 @@
 // InformasiAdapter.kt
 package com.example.sejutadarah
 
+import android.graphics.Bitmap
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.sejutadarah.Database.article
 import com.squareup.picasso.Picasso
+import java.io.ByteArrayOutputStream
+
 
 class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHolder>() {
 
@@ -49,6 +50,10 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
 //                .transition(DrawableTransitionOptions.withCrossFade())
 //                .into(imageProfile)
 
+//            val bmp: Bitmap = article
+//            val stream = ByteArrayOutputStream()
+//            bmp.compress(Bitmap.CompressFormat.PNG, 100, stream)
+//            val byteArray = stream.toByteArray()
             Picasso.get()
                 .load(article.foto)
                 .placeholder(R.drawable.logo) // Gambar placeholder
