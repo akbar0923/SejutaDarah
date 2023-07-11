@@ -1,6 +1,4 @@
-// InformasiAdapter.kt
 package com.example.sejutadarah
-
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.sejutadarah.Database.article
 import com.squareup.picasso.Picasso
+import com.example.sejutadarah.Database.article
+import com.google.firebase.database.*
 
 class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHolder>() {
 
     private val articleList = mutableListOf<article>()
+    private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): InformasiViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.informasi_view, parent, false)
@@ -43,15 +41,11 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         private val deskripsi: TextView = itemView.findViewById(R.id.isi_informasi)
 
         fun bindItem(article: article) {
-//            Glide.with(itemView.context)
-//                .load(article.foto)
-//                .placeholder(R.drawable.ic_user) // Placeholder gambar default
-//                .transition(DrawableTransitionOptions.withCrossFade())
-//                .into(imageProfile)
+            val imageUrl = article.foto // URL gambar dari artikel di Firebase Realtime Database
 
             Picasso.get()
-                .load(article.foto)
-                .placeholder(R.drawable.logo) // Gambar placeholder
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_user) // Placeholder gambar default
                 .into(imageProfile)
 
             judul.text = article.judul
@@ -64,3 +58,4 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         }
     }
 }
+

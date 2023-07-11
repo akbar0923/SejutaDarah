@@ -31,6 +31,8 @@ class riwayatDonor (
     @set:PropertyName("tekananDarah")
     var tekananDarah: String = "",
 
+    val userId : String = "",
+
     @get:PropertyName("tinggiBadan")
     @set:PropertyName("tinggiBadan")
     var tinggiBadan: String = ""
