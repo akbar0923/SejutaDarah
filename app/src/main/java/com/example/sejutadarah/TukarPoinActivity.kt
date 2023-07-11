@@ -39,9 +39,27 @@ class TukarPoinActivity : AppCompatActivity() {
 
         val hadiahList = listOf<TukarPoinClass>(
             TukarPoinClass(
-                namaHadiah = "Beef Burger",
-                hargaHadiah = "Rp20.000 - Rp35.000",
-                hargaPoin = "4,5"
+                namaHadiah = "Pulsa Telkomsel",
+                hargaHadiah = "Rp25.000",
+                hargaPoin = "2500"
+
+            ),
+            TukarPoinClass(
+                namaHadiah = "Pulsa Telkomsel",
+                hargaHadiah = "Rp20.000",
+                hargaPoin = "2000"
+
+            ),
+            TukarPoinClass(
+                namaHadiah = "Pulsa Telkomsel",
+                hargaHadiah = "Rp25.000",
+                hargaPoin = "2500"
+
+            ),
+            TukarPoinClass(
+                namaHadiah = "Pulsa Telkomsel",
+                hargaHadiah = "Rp50.000",
+                hargaPoin = "5000"
 
             )
         )
