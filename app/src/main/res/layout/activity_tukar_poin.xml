@@ -13,26 +13,30 @@
         android:background="@color/red"/>
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="31dp"
+        android:clickable="true"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/ic_btn_back" />
+        android:src="@drawable/back_button"
+        />
 
     <TextView
         android:id="@+id/textView9"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="30dp"
         android:text="Tukar Poin"
+        android:fontFamily="@font/poppins_bold"
         android:textColor="@color/white"
-        android:textSize="29dp"
+        android:textSize="30dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/back_button"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
@@ -87,13 +91,15 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListHadiah"
         android:layout_width="301dp"
         android:layout_height="match_parent"
         android:layout_marginTop="212dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        android:paddingTop="26dp"/>
+        tools:listitem="@layout/tukar_poin_view"
+        android:paddingTop="20dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

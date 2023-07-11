@@ -12,7 +12,9 @@
     <FrameLayout
         android:id="@+id/frameLayoutContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+
+        />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
@@ -30,7 +32,6 @@
             android:layout_marginEnd="20dp"
             app:labelVisibilityMode="labeled"
             android:background="@drawable/background_transparent"
-
             app:menu="@menu/bottom_navigation_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>

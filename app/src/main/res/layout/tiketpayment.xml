@@ -13,6 +13,7 @@
         android:layout_marginStart="17dp"
         android:layout_marginTop="24dp"
         android:clickable="true"
+        android:padding="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_button" />
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_bold"
+        android:padding="16dp"
         android:text="Donor Connect"
         android:textColor="@color/white"
         android:textSize="20sp"
@@ -47,7 +49,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/textView18"
+                android:id="@+id/harga_poin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="31dp"
@@ -130,7 +132,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/harga_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="9dp"
@@ -147,7 +149,7 @@
                 android:layout_marginTop="9dp"
                 android:text="Transfer Bank"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView18" />
+                app:layout_constraintTop_toBottomOf="@+id/harga_poin" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView2"
