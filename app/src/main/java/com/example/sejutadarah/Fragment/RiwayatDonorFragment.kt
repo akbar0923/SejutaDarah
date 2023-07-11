@@ -38,6 +38,7 @@ class RiwayatDonorFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_riwayat_donor, container, false)
 
+        // recycler view
         recyclerView = view.findViewById(R.id.recyclerViewRiwayatDonor)
         recyclerView.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 

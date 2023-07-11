@@ -1,15 +1,18 @@
 package com.example.sejutadarah.Fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.sejutadarah.Database.userSejutaDarah
 import com.example.sejutadarah.R
+import com.example.sejutadarah.TukarPoinActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -21,6 +24,7 @@ class ProfileFragment : Fragment() {
     private lateinit var golongandarah: TextView
     private lateinit var nik: TextView
 
+    private lateinit var btnTukarPoin: CardView
 
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
@@ -38,8 +42,11 @@ class ProfileFragment : Fragment() {
         imageProfile = view.findViewById(R.id.foto_profile)
         textName = view.findViewById(R.id.nama_user)
         emailName = view.findViewById(R.id.email_user)
-        golongandarah = view.findViewById(R.id.GolonganDarah_user)
+        golongandarah = view.findViewById(R.id.tvSimbolGender)
         nik = view.findViewById(R.id.nik_user)
+
+        btnTukarPoin = view.findViewById(R.id.btn_tukarPoin)
+
 
         // Inisialisasi Firebase
         auth = FirebaseAuth.getInstance()
@@ -79,6 +86,11 @@ class ProfileFragment : Fragment() {
                 // Handle error jika terjadi
             }
         })
+
+        btnTukarPoin.setOnClickListener {
+            val intent = Intent(context, TukarPoinActivity::class.java) // ganti tujuan tombol
+            startActivity(intent)
+        }
 
         return view
     }
