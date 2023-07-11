@@ -76,24 +76,13 @@ import java.util.Locale
 //
 class DonorConnectFragment : Fragment() {
 
-    private lateinit var btnTiketPayment: CardView
-
     private var _binding: FragmentDonorConnectBinding? = null
 
-
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
     private lateinit var auth: FirebaseAuth
     private lateinit var mFusedLocationClient: FusedLocationProviderClient
     private val permissionId = 2
 
-    //    private var adapter = DonorConnectAdapter()
-//    private lateinit var database: DatabaseReference
-//    private var key: String? = null
-//    private var isLastPage = false
-//
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -111,7 +100,7 @@ class DonorConnectFragment : Fragment() {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         auth = FirebaseAuth.getInstance()
         
-        btnTiketPayment.setOnClickListener {
+        binding.cvTiketPayment.setOnClickListener {
             val intent = Intent(context, TiketPaymentActivity::class.java) // ganti tujuan tombol
             startActivity(intent)
         }
@@ -144,7 +133,7 @@ class DonorConnectFragment : Fragment() {
 
     @SuppressLint("MissingPermission", "SetTextI18n")
     private fun addData() {
-        var currentLocation = "Banjarmasin"
+
         if (checkPermissions()) {
             if (isLocationEnabled()) {
                 mFusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
