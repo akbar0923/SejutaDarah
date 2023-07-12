@@ -1,7 +1,9 @@
 // EdukasiFragment.kt
 package com.example.sejutadarah.Fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sejutadarah.Database.article
 import com.example.sejutadarah.InformasiAdapter
+import com.example.sejutadarah.InformasiDetail
 import com.example.sejutadarah.R
+import com.example.sejutadarah.TiketPaymentActivity
+import com.example.sejutadarah.TukarPoinActivity
+import com.example.sejutadarah.TukarPoinAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -32,6 +38,7 @@ class EdukasiFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edukasi, container, false)
 
+        // recycler view
         recyclerView = view.findViewById(R.id.recyclerViewInformasi)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
@@ -62,6 +69,18 @@ class EdukasiFragment : Fragment() {
             }
         })
 
+        adapter.setOnItemClickListener { article ->
+            val intent = Intent(requireContext(), InformasiDetail::class.java)
+            intent.putExtra(INTENT_PARCELABLE, article as Parcelable)
+            startActivity(intent)
+        }
+
         return view
     }
+
+    companion object {
+        val INTENT_PARCELABLE = "OBJECT_INTENT"
+//        private const val TAG = "EdukasiFragment"
+    }
+
 }

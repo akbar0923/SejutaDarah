@@ -10,6 +10,8 @@ data class userSejutaDarah (
     val identity : String = "",
     val bloodGroup : String = "",
     val rewardPoints : String = "",
-    val nik : String = ""
+    val gender : String = "",
+    val nik : String = "",
+    val noHP : String = ""
 
 )

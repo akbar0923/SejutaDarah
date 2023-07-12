@@ -9,6 +9,12 @@
         <item>O</item>
     </string-array>
 
+    <string name="pilih_gender">Pilih Jenis Kelamin</string>
+    <string-array name="gender">
+        <item>Pria</item>
+        <item>Wanita</item>
+    </string-array>
+
     <string name="title_activity_dummy_maps">DummyMapsActivity</string>
     <string name="title_activity_donnor_connect">DonnorConnectActivity</string>
     <!-- Strings used for fragments for navigation -->

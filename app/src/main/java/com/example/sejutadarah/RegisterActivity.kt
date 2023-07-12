@@ -21,6 +21,9 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     private lateinit var btnRegister: Button
     private lateinit var etNik: EditText
+    private lateinit var etNoHP: EditText
+
+    private lateinit var spinnerGender: Spinner
     private lateinit var spinnerGolonganDarah: Spinner
 
     private lateinit var tvLogin: TextView
@@ -38,6 +41,8 @@ class RegisterActivity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         btnRegister = findViewById(R.id.btnRegister)
         etNik = findViewById(R.id.etNIK)
+        etNoHP = findViewById(R.id.etNoHP)
+        spinnerGender = findViewById(R.id.spinnerGender)
         spinnerGolonganDarah = findViewById(R.id.spinnerGolonganDarah)
 
         tvLogin = findViewById(R.id.tvLogin)
@@ -47,10 +52,12 @@ class RegisterActivity : AppCompatActivity() {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
             val nik = etNik.text.toString().trim()
+            val noHP = etNoHP.text.toString().trim()
             val bloodGroup = spinnerGolonganDarah.selectedItem.toString()
+            val gender = spinnerGender.selectedItem.toString()
 
             // Validasi inputan
-            if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() ||bloodGroup.isEmpty()|| nik.isEmpty()) {
+            if (fullName.isEmpty() || email.isEmpty() || password.isEmpty() ||bloodGroup.isEmpty()|| nik.isEmpty()|| noHP.isEmpty()|| gender.isEmpty()) {
                 Toast.makeText(this, "Harap isi semua field", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
@@ -76,7 +83,9 @@ class RegisterActivity : AppCompatActivity() {
                             "",
                             bloodGroup,
                             "",
-                            nik
+                            gender,
+                            nik,
+                            noHP
                         )
 
                         // Menyimpan data pengguna ke Firebase Realtime Database

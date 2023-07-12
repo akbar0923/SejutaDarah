@@ -1,4 +1,5 @@
 package com.example.sejutadarah
+
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import com.google.firebase.database.*
 
 class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHolder>() {
 
+    private var onItemClickListener: ((article) -> Unit)? = null
+
     private val articleList = mutableListOf<article>()
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
@@ -23,6 +26,11 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
     override fun onBindViewHolder(holder: InformasiViewHolder, position: Int) {
         val article = articleList[position]
         holder.bindItem(article)
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(article)
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -34,6 +42,11 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         articleList.addAll(data)
         notifyDataSetChanged()
     }
+
+    fun setOnItemClickListener(listener: (article) -> Unit) {
+        onItemClickListener = listener
+    }
+
 
     inner class InformasiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageProfile: ImageView = itemView.findViewById(R.id.informasi_image)
@@ -56,6 +69,8 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
             deskripsi.maxLines = 6 // Mengatur maksimum 2 baris untuk deskripsi
             deskripsi.ellipsize = TextUtils.TruncateAt.END // Menambahkan ellipsis jika teks terpotong
         }
+
+
     }
 }
 

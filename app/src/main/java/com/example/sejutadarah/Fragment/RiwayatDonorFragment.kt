@@ -52,18 +52,20 @@ class RiwayatDonorFragment : Fragment() {
                 for (riwayatDonorSnapshot in dataSnapshot.children) {
                     val riwayatDonor = riwayatDonorSnapshot.getValue(riwayatDonor::class.java)
                     riwayatDonor?.let {
-                        if (it.userId == currentUser.uid) {
-                            riwayatDonorList.add(it)
+//                        if (it.userId == currentUser.uid) {
+//                            riwayatDonorList.add(it)
+//                        }
+                        riwayatDonorList.add(riwayatDonor)
                         }
                     }
-                }
 
                 adapter.setData(riwayatDonorList)
-            }
+                }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle error jika terjadi
             }
+
         })
 
 

@@ -25,6 +25,7 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.sejutadarah.DataDonorConnectActivity
 import com.example.sejutadarah.Database.DonorConnect
 import com.example.sejutadarah.Database.NotificationMessage
 import com.example.sejutadarah.Database.Token
@@ -105,6 +106,11 @@ class DonorConnectFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.cvListDataDC.setOnClickListener{
+            val intent = Intent(context, DataDonorConnectActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnCariDonorConnect.setOnClickListener {
             addData()
         }
@@ -177,7 +183,7 @@ class DonorConnectFragment : Fragment() {
                                 // Menyimpan data pengguna ke Firebase Realtime Database
                                 if (id != null) {
                                     ref.child(id).setValue(data).addOnCompleteListener{
-                                        Toast.makeText(requireContext(), "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(requireContext(), "Data berhasil terkirim", Toast.LENGTH_SHORT).show()
                                     }
                                 }
 

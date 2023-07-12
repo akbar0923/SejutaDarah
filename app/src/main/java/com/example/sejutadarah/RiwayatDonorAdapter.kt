@@ -30,9 +30,7 @@ class RiwayatDonorAdapter: RecyclerView.Adapter<RiwayatDonorAdapter.RiwayatDonor
     override fun onBindViewHolder(holder: RiwayatDonorViewHolder, position: Int) {
         val riwayatDonor = dataRiwayat[position]
         holder.bindItem(riwayatDonor)
-//        holder.riwayatTanggal.text = item
-//        holder.riwayatTempat.text = item
-//        holder.riwayatGambar.setImageResource(R.drawable.ic_calender)
+
     }
 
     override fun getItemCount(): Int {
