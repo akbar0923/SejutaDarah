@@ -7,12 +7,15 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sejutadarah.Database.article
 import com.squareup.picasso.Picasso
 import com.google.firebase.database.*
+import kotlinx.coroutines.withContext
 
 class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHolder>() {
 
+//    private lateinit var currentViewHolder: InformasiViewHolder
     private var onItemClickListener: ((article) -> Unit)? = null
 
     private val articleList = mutableListOf<article>()
@@ -47,6 +50,9 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         onItemClickListener = listener
     }
 
+//    fun getImageViewHolder(): InformasiViewHolder {
+//        return currentViewHolder
+//    }
 
     inner class InformasiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageProfile: ImageView = itemView.findViewById(R.id.informasi_image)
@@ -56,9 +62,9 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         fun bindItem(article: article) {
             val imageUrl = article.foto // URL gambar dari artikel di Firebase Realtime Database
 
-            Picasso.get()
+            Glide.with(itemView)
                 .load(imageUrl)
-                .placeholder(R.drawable.ic_user) // Placeholder gambar default
+                .placeholder(R.drawable.ic_logo_di_tukar_poin) // Placeholder gambar default
                 .into(imageProfile)
 
             judul.text = article.judul
@@ -66,7 +72,7 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
             judul.ellipsize = TextUtils.TruncateAt.END
 
             deskripsi.text = article.deskripsi
-            deskripsi.maxLines = 6 // Mengatur maksimum 2 baris untuk deskripsi
+            deskripsi.maxLines = 5 // Mengatur maksimum 2 baris untuk deskripsi
             deskripsi.ellipsize = TextUtils.TruncateAt.END // Menambahkan ellipsis jika teks terpotong
         }
 

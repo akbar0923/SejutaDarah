@@ -5,9 +5,6 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class article(
-//    @get:PropertyName("content")
-//    @set:PropertyName("content")
-//    var content: String = "",
 
     @get:PropertyName("judul")
     @set:PropertyName("judul")
