@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sejutadarah.Database.article
 import com.example.sejutadarah.InformasiAdapter
 import com.example.sejutadarah.InformasiDetail
@@ -20,6 +21,7 @@ import com.example.sejutadarah.TukarPoinAdapter
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.storage.FirebaseStorage
 
 class EdukasiFragment : Fragment() {
 
@@ -29,6 +31,8 @@ class EdukasiFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private lateinit var currentUser: FirebaseUser
     private lateinit var database: FirebaseDatabase
+    private lateinit var storage: FirebaseStorage
+
     private lateinit var articleRef: DatabaseReference
 
     override fun onCreateView(
@@ -49,6 +53,7 @@ class EdukasiFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         currentUser = auth.currentUser!!
         database = FirebaseDatabase.getInstance()
+        storage = FirebaseStorage.getInstance()
         articleRef = database.reference.child("article")
 
         // Ambil data dari Firebase
@@ -62,6 +67,13 @@ class EdukasiFragment : Fragment() {
                     }
                 }
                 adapter.setData(articleList)
+
+//                for (article in articleList) {
+//                    val fotoUrl = article.foto
+//                    Glide.with(requireContext())
+//                        .load(fotoUrl)
+//                        .into(adapter.getImageViewHolder().informasi_image)
+//                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

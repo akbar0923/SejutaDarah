@@ -77,7 +77,7 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
             judul.ellipsize = TextUtils.TruncateAt.END
 
             deskripsi.text = article.deskripsi
-            deskripsi.maxLines = 6 // Mengatur maksimum 2 baris untuk deskripsi
+            deskripsi.maxLines = 5 // Mengatur maksimum 2 baris untuk deskripsi
             deskripsi.ellipsize = TextUtils.TruncateAt.END // Menambahkan ellipsis jika teks terpotong
         }
 

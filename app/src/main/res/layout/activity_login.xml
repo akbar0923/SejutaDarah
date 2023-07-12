@@ -24,7 +24,7 @@
             android:layout_marginTop="@dimen/spacing_large"
             android:layout_marginBottom="@dimen/spacing_mlarge"
             android:src="@drawable/logo"
-            app:srcCompat="@drawable/logo_apps" />
+            />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -70,6 +70,7 @@
                     android:maxLength="50"
                     android:maxLines="1"
 
+                    android:textColor="@color/grey_80"
                     android:textStyle="bold" />
 
                 <View
@@ -94,6 +95,7 @@
                     android:inputType="textPassword"
                     android:maxLength="50"
                     android:maxLines="1"
+                    android:textColor="@color/grey_80"
                     android:textStyle="bold" />
 
                 <!--                <com.google.android.material.textfield.TextInputEditText-->

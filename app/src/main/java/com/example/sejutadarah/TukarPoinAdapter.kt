@@ -9,8 +9,10 @@ import android.widget.RatingBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sejutadarah.Database.TukarPoinClass
+import com.example.sejutadarah.Database.article
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.squareup.picasso.Picasso
 
 class TukarPoinAdapter (private val context: Context, private val poinHadiah: List<TukarPoinClass>, val listener: (TukarPoinClass) -> Unit)
     : RecyclerView.Adapter<TukarPoinAdapter.TukarPoinViewHolder>(){
@@ -29,6 +31,10 @@ class TukarPoinAdapter (private val context: Context, private val poinHadiah: Li
             namaHadiah.text = TukarPoin.namaHadiah
             hargaHadiah.text = TukarPoin.hargaHadiah
             hargaPoin.text = TukarPoin.hargaPoin
+
+
+
+
 
             itemView.setOnClickListener{
                 (listener(TukarPoin))
