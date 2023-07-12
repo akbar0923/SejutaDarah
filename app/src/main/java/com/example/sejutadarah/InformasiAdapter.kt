@@ -12,6 +12,7 @@ import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sejutadarah.Database.article
+import com.example.sejutadarah.Fragment.DonorConnectAdapter
 import com.google.firebase.database.*
 import java.util.Base64
 
@@ -20,6 +21,7 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
 
     private var onItemClickListener: ((article) -> Unit)? = null
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
     private val articleList = mutableListOf<article>()
     private val database: DatabaseReference = FirebaseDatabase.getInstance().reference
 
@@ -34,7 +36,7 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         holder.bindItem(article)
 
         holder.itemView.setOnClickListener {
-            onItemClickListener?.invoke(article)
+            onItemClickCallback.onItemClicked(article)
         }
 
     }
@@ -53,6 +55,9 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
         onItemClickListener = listener
     }
 
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
 
     inner class InformasiViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageProfile: ImageView = itemView.findViewById(R.id.informasi_image)
@@ -81,7 +86,10 @@ class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHold
             deskripsi.ellipsize = TextUtils.TruncateAt.END // Menambahkan ellipsis jika teks terpotong
         }
 
+    }
 
+    interface OnItemClickCallback {
+        fun onItemClicked(articleDetail: article)
     }
 }
 

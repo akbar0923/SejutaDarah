@@ -156,11 +156,18 @@ class HomeFragment : Fragment() {
 //                .commit()
 //        }
 
-        adapter.setOnItemClickListener { article ->
-            val intent = Intent(requireContext(), InformasiDetail::class.java)
-            intent.putExtra(EdukasiFragment.INTENT_PARCELABLE, article as Parcelable)
-            startActivity(intent)
-        }
+//        adapter.setOnItemClickListener { article ->
+//            val intent = Intent(requireContext(), InformasiDetail::class.java)
+//            intent.putExtra(EdukasiFragment.INTENT_PARCELABLE, article as Parcelable)
+//            startActivity(intent)
+//        }
+        adapter.setOnItemClickCallback(object: InformasiAdapter.OnItemClickCallback{
+            override fun onItemClicked(articleDetail: article) {
+                val intent = Intent(requireActivity(), InformasiDetail::class.java)
+                intent.putExtra(EXTRA_DATA, articleDetail)
+                startActivity(intent)
+            }
+        })
 
 
         return view
@@ -189,6 +196,7 @@ class HomeFragment : Fragment() {
     }
 
     companion object {
+        const val EXTRA_DATA = "extra_data"
         val INTENT_PARCELABLE = "OBJECT_INTENT"
     }
 }
