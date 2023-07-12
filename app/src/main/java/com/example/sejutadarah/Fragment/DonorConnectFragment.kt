@@ -1,21 +1,51 @@
 package com.example.sejutadarah.Fragment
-//
-//import android.R.attr.duration
-//import android.content.Intent
+
+import android.R.attr.duration
+
+import android.Manifest
+import android.R.attr.duration
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
+import android.location.Location
+import android.location.LocationManager
 import android.os.Bundle
-//import android.util.Log
+import android.provider.Settings
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.cardview.widget.CardView
-//import android.view.ViewGroup
-//import android.widget.Toast
-//import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.sejutadarah.Database.DonorConnect
+import com.example.sejutadarah.Database.NotificationMessage
+import com.example.sejutadarah.Database.Token
+import com.example.sejutadarah.Database.userSejutaDarah
+import com.example.sejutadarah.DonorConnectActivity
+import com.example.sejutadarah.DummyMapsActivity
+import com.example.sejutadarah.HomeActivity
 import com.example.sejutadarah.R
 import com.example.sejutadarah.TiketPaymentActivity
 import com.example.sejutadarah.databinding.FragmentDonorConnectBinding
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.material.color.utilities.Score.score
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import java.util.Locale
 
 //import androidx.recyclerview.widget.LinearLayoutManager
 //import androidx.recyclerview.widget.RecyclerView
@@ -46,143 +76,182 @@ import com.example.sejutadarah.databinding.FragmentDonorConnectBinding
 //
 class DonorConnectFragment : Fragment() {
 
-    private lateinit var btnTiketPayment: CardView
-
     private var _binding: FragmentDonorConnectBinding? = null
 
-
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private lateinit var auth: FirebaseAuth
+    private lateinit var mFusedLocationClient: FusedLocationProviderClient
+    private val permissionId = 2
 
-    //    private var adapter = DonorConnectAdapter()
-//    private lateinit var database: DatabaseReference
-//    private var key: String? = null
-//    private var isLastPage = false
-//
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_donor_connect, container, false)
-//        _binding = FragmentDonorConnectBinding.inflate(inflater, container, false)
 
-//        btnTiketPayment = view.findViewById(R.id.cv_tiketPayment)
+        _binding = FragmentDonorConnectBinding.inflate(inflater, container, false)
 
-        btnTiketPayment = view.findViewById(R.id.cv_tiketPayment)
-//
-//        return binding.root
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        btnTiketPayment.setOnClickListener {
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        auth = FirebaseAuth.getInstance()
+        
+        binding.cvTiketPayment.setOnClickListener {
             val intent = Intent(context, TiketPaymentActivity::class.java) // ganti tujuan tombol
             startActivity(intent)
         }
 
-        return view
-    }
+        binding.btnCariDonorConnect.setOnClickListener {
+            addData()
+        }
 
-}
+
+//            val message = NotificationMessage(
+//                "cfS1orKHQAeJcvR6QtMP6L:APA91bHc3Kh5ZSl0NFVvec9348gN21d_ZSmNTnUXHd0QKfkiqsXpjuCMMCVviOJvcY7ZUue4m_pTBHQoa6rbYsgH3OpYhvOvIfiq050AntCmYuWzKg27nbehUCd-3K-eWPfE4siLDytC",
+//                "tes"
+//            ).message
 //
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        binding.cvUntukSaya.setOnClickListener {
-//            val intent = Intent(activity, DummyMapsActivity::class.java)
-//            activity?.startActivity(intent)
-//        }
-//
-//        binding.cvUntukOrang.setOnClickListener {
-//            val intent = Intent(activity, DonorConnectActivity::class.java)
-//            activity?.startActivity(intent)
-//
-//
-////            val message = NotificationMessage(
-////                "cfS1orKHQAeJcvR6QtMP6L:APA91bHc3Kh5ZSl0NFVvec9348gN21d_ZSmNTnUXHd0QKfkiqsXpjuCMMCVviOJvcY7ZUue4m_pTBHQoa6rbYsgH3OpYhvOvIfiq050AntCmYuWzKg27nbehUCd-3K-eWPfE4siLDytC",
-////                "tes"
-////            ).message
-////
-////            FCMSender().send(message, object : Callback {
-////                override fun onFailure(call: Call, e: IOException) {
-////                    activity?.runOnUiThread {
-////                        Toast.makeText(activity, "Kirim gagal", Toast.LENGTH_SHORT).show()
-////                    }
-////                }
-////
-////                override fun onResponse(call: Call, response: Response) {
-////                    activity?.runOnUiThread {
-////                        Toast.makeText(activity, response.body.toString(), Toast.LENGTH_SHORT).show()
-////                    }
-////                }
-////            })
-//        }
-//
-//        binding.rvDonorConnect.layoutManager = LinearLayoutManager(context)
-//        binding.rvDonorConnect.adapter = adapter
-//        binding.rvDonorConnect.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                super.onScrolled(recyclerView, dx, dy)
-//
-//                val visibleItemCount = (binding.rvDonorConnect.layoutManager as LinearLayoutManager).childCount
-//                Log.w(TAG, "1: $visibleItemCount")
-//                val totalItemCount = (binding.rvDonorConnect.layoutManager as LinearLayoutManager).itemCount
-//                Log.w(TAG, "2: $totalItemCount")
-//                val firstVisibleItemPosition = (binding.rvDonorConnect.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-//                Log.w(TAG, "3: $firstVisibleItemPosition")
-//
-////                if(!isLastPage)
-////                {
-////                    if (visibleItemCount + firstVisibleItemPosition >= totalItemCount && firstVisibleItemPosition >= 0) {
-////                        Log.w(TAG, "TESSSSSSSSSS")
-////                        loadData()
-////                    }
-////                }
-//            }
-//        })
-//        loadData()
-//    }
-//
-//    private fun loadData() {
-//        get(key).addValueEventListener(object : ValueEventListener {
-//            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                val donorConnectList: MutableList<DonorConnect> = mutableListOf()
-//                for (donorConnectSnapshot in dataSnapshot.children) {
-//                    val donorConnect: DonorConnect? = donorConnectSnapshot.getValue(DonorConnect::class.java)
-//                    if (donorConnect != null) {
-//                        donorConnectList.add(donorConnect)
-//                    } else {
-//                        isLastPage = true
-//                        break
+//            FCMSender().send(message, object : Callback {
+//                override fun onFailure(call: Call, e: IOException) {
+//                    activity?.runOnUiThread {
+//                        Toast.makeText(activity, "Kirim gagal", Toast.LENGTH_SHORT).show()
 //                    }
-//                    key = donorConnectSnapshot.key
 //                }
 //
-//                adapter.addItem(donorConnectList)
-//                binding.rvDonorConnect.adapter = adapter
-//            }
-//
-//            override fun onCancelled(databaseError: DatabaseError) {
-//                // Getting Post failed, log a message
-//                Log.w(TAG, "loadPost:onCancelled", databaseError.toException())
-//                // ...
-//            }
-//        })
-//    }
-//
-//    private fun get(key: String?) : Query
-//    {
-//        database = Firebase.database.reference
-//
-////        if(key == null){
-////            return database.child("donorConnect").orderByKey().limitToFirst(5)
-////        }
-//
-//        return database.child("donorConnect")
-//    }
-//
-//    companion object {
-//        private const val TAG = "DonorConnectFragment"
-//    }
-//}
+//                override fun onResponse(call: Call, response: Response) {
+//                    activity?.runOnUiThread {
+//                        Toast.makeText(activity, response.body.toString(), Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            })
+//        }
+    }
+
+    @SuppressLint("MissingPermission", "SetTextI18n")
+    private fun addData() {
+
+        if (checkPermissions()) {
+            if (isLocationEnabled()) {
+                mFusedLocationClient.lastLocation.addOnCompleteListener(requireActivity()) { task ->
+                    val location: Location? = task.result
+                    if (location != null) {
+                        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+                        val list: MutableList<Address>? =
+                            geocoder.getFromLocation(location.latitude, location.longitude, 1)
+                        val kontak = binding.KontakDonorConnect.text.toString().trim()
+                        val lokasi = list?.get(0)?.getAddressLine(0) ?: ""
+                        val goldar = binding.GolDarDonorConnect.selectedItem.toString().trim()
+
+                        val ref = FirebaseDatabase.getInstance().getReference("donorConnect")
+
+                        val id = ref.push().key
+
+                        // Inisialisasi Firebase
+                        val currentUser = auth.currentUser!!
+                        val userRef = FirebaseDatabase.getInstance().getReference("userSejutaDarah")
+                        var nama = ""
+
+                        // Ambil data dari Firebase
+                        userRef.addValueEventListener(object : ValueEventListener {
+                            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                                // Ambil nilai dari database
+                                for (userSnapshot in dataSnapshot.children) {
+                                    val user: userSejutaDarah? = userSnapshot.getValue(
+                                        userSejutaDarah::class.java)
+                                    if (user != null) {
+                                        if(user.userId == currentUser.uid) {
+                                            // Set nilai ke komponen tampilan
+                                            nama = user.fullName
+
+                                            break
+                                        }
+                                    }
+                                }
+
+                                val data = DonorConnect(id, nama,currentUser?.uid ?: "", kontak, lokasi, goldar)
+
+                                // Menyimpan data pengguna ke Firebase Realtime Database
+                                if (id != null) {
+                                    ref.child(id).setValue(data).addOnCompleteListener{
+                                        Toast.makeText(requireContext(), "Data berhasil Ditambahkan", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                                // Lakukan tindakan sesuai kebutuhan, seperti mengarahkan pengguna ke halaman berikutnya
+                                val intent = Intent(requireContext(), HomeActivity::class.java)
+                                startActivity(intent)
+                            }
+
+                            override fun onCancelled(databaseError: DatabaseError) {
+                                // Handle error jika terjadi
+                                // Lakukan tindakan sesuai kebutuhan, seperti mengarahkan pengguna ke halaman berikutnya
+                                Toast.makeText(requireContext(), "Data gagal Ditambahkan", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(requireContext(), HomeActivity::class.java)
+                                startActivity(intent)
+                            }
+                        })
+                    }
+                }
+            } else {
+                Toast.makeText(requireContext(), "Please turn on location", Toast.LENGTH_LONG).show()
+                val intent = Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS)
+                startActivity(intent)
+            }
+        } else {
+            requestPermissions()
+        }
+    }
+
+    private fun isLocationEnabled(): Boolean {
+        val locationManager: LocationManager =
+            requireActivity().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER
+        )
+    }
+
+    private fun checkPermissions(): Boolean {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return true
+        }
+        return false
+    }
+    private fun requestPermissions() {
+        ActivityCompat.requestPermissions(
+            requireActivity(),
+            arrayOf(
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ),
+            permissionId
+        )
+    }
+    @SuppressLint("MissingSuperCall")
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>,
+        grantResults: IntArray
+    ) {
+        if (requestCode == permissionId) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                addData()
+            }
+        }
+    }
+
+    companion object {
+        private const val TAG = "DonorConnectFragment"
+    }
+}

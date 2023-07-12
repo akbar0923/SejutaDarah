@@ -6,8 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.example.sejutadarah.Database.article
+import com.squareup.picasso.Picasso
 import com.google.firebase.database.*
 
 class InformasiAdapter : RecyclerView.Adapter<InformasiAdapter.InformasiViewHolder>() {

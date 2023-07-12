@@ -68,7 +68,6 @@
 <!--        </activity>-->
 <!--        <activity android:name=".DummyMapsActivity" />-->
 
-
         <service
             android:name=".Service.MyFirebaseMessagingService"
             android:enabled="true"
