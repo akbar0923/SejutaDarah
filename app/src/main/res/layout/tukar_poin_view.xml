@@ -13,7 +13,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/imgLogo"
             android:layout_width="19dp"
             android:layout_height="20dp"
             android:layout_marginStart="8dp"
@@ -31,7 +31,7 @@
             android:text="Sejuta Darah"
             android:textSize="14sp"
             android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="@+id/imageView7"
+            app:layout_constraintStart_toEndOf="@+id/imgLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
