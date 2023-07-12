@@ -1,8 +1,11 @@
 package com.example.sejutadarah.Database
 
+import android.os.Parcelable
 import com.google.firebase.firestore.PropertyName
+import kotlinx.android.parcel.Parcelize
 
-class riwayatDonor (
+@Parcelize
+data class RiwayatDonor (
     @get:PropertyName("beratBadan")
     @set:PropertyName("beratBadan")
     var beratBadan: String = "",
@@ -31,10 +34,11 @@ class riwayatDonor (
     @set:PropertyName("tekananDarah")
     var tekananDarah: String = "",
 
-    val userId : String = "",
-
     @get:PropertyName("tinggiBadan")
     @set:PropertyName("tinggiBadan")
-    var tinggiBadan: String = ""
+    var tinggiBadan: String = "",
 
-)
+    @get:PropertyName("uid")
+    @set:PropertyName("uid")
+    var uid: String = ""
+) : Parcelable

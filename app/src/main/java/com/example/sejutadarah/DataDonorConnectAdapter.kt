@@ -8,10 +8,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sejutadarah.Database.DonorConnect
-import com.example.sejutadarah.Database.article
-import com.example.sejutadarah.Database.riwayatDonor
-import com.example.sejutadarah.Fragment.DonorConnectAdapter
-import com.squareup.picasso.Picasso
 import com.google.firebase.database.*
 
 class DataDonorConnectAdapter : RecyclerView.Adapter<DataDonorConnectAdapter.ViewHolder>() {
