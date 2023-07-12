@@ -347,7 +347,7 @@
                                 android:background="@drawable/circle_background">
 
                                 <TextView
-                                    android:id="@+id/tvSimbolGender"
+                                    android:id="@+id/tvJumlahTiket"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/poppins_semibold"
@@ -363,7 +363,7 @@
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <TextView
-                                android:id="@+id/tvGender"
+                                android:id="@+id/tv_Tiket"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"

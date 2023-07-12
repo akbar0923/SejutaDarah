@@ -62,6 +62,9 @@
         <activity android:name=".HomeActivity"/>
         <activity android:name=".TukarPoinActivity"/>
         <activity android:name=".TiketPaymentActivity"/>
+        <activity android:name=".DataDonorConnectActivity"/>
+        <activity android:name=".InformasiDetail"/>
+
 
 
         <!-- Tambahkan intent-filter sesuai kebutuhan -->

@@ -1,13 +1,14 @@
 package com.example.sejutadarah.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.sejutadarah.Database.riwayatDonor
+import com.example.sejutadarah.Database.RiwayatDonor
 import com.example.sejutadarah.R
 import com.example.sejutadarah.RiwayatDonorAdapter
 import com.google.firebase.auth.FirebaseAuth
@@ -47,23 +48,25 @@ class RiwayatDonorFragment : Fragment() {
         // Ambil data dari Firebase
         riwayatDonorRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                val riwayatDonorList = mutableListOf<riwayatDonor>()
+                val riwayatDonorList = mutableListOf<RiwayatDonor>()
 
                 for (riwayatDonorSnapshot in dataSnapshot.children) {
-                    val riwayatDonor = riwayatDonorSnapshot.getValue(riwayatDonor::class.java)
-                    riwayatDonor?.let {
-                        if (it.userId == currentUser.uid) {
-                            riwayatDonorList.add(it)
+                    val riwayatDonor = riwayatDonorSnapshot.getValue(RiwayatDonor::class.java)
+                        riwayatDonor?.let {
+                            if (it.uid == currentUser.uid) {
+
+                                riwayatDonorList.add(it)
+                            }
+                            //riwayatDonorList.add(riwayatDonor)
                         }
                     }
-                }
-
                 adapter.setData(riwayatDonorList)
-            }
+                }
 
             override fun onCancelled(databaseError: DatabaseError) {
                 // Handle error jika terjadi
             }
+
         })
 
 

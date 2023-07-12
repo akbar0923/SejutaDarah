@@ -66,7 +66,7 @@
                             app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/tvSimbolGender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="__________________"
@@ -90,7 +90,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2">
+                            app:layout_constraintTop_toBottomOf="@+id/tvSimbolGender">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -101,10 +101,10 @@
                                     android:id="@+id/cv_tiketPayment"
                                     android:layout_width="0dp"
                                     android:layout_height="match_parent"
-                                    app:cardElevation="5dp"
                                     android:layout_margin="30dp"
+                                    android:layout_weight="0.22"
                                     app:cardCornerRadius="10dp"
-                                    android:layout_weight="0.33333" >
+                                    app:cardElevation="5dp">
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -136,6 +136,55 @@
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="8dp"
                                             android:text="3"
+                                            android:textAlignment="center"
+                                            android:textColor="#000000"
+                                            android:textSize="19sp"
+                                            android:textStyle="bold" />
+
+                                    </LinearLayout>
+
+
+                                </androidx.cardview.widget.CardView>
+
+                                <androidx.cardview.widget.CardView
+                                    android:id="@+id/cv_listDataDC"
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    app:cardElevation="5dp"
+                                    android:layout_margin="30dp"
+                                    app:cardCornerRadius="10dp"
+                                    android:layout_weight="0.33333" >
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:orientation="vertical">
+
+                                        <androidx.constraintlayout.widget.ConstraintLayout
+                                            android:layout_width="60dp"
+                                            android:layout_height="60dp"
+                                            android:layout_gravity="center_horizontal"
+                                            android:layout_margin="12dp"
+                                            android:background="@drawable/circle_background">
+
+                                            <!-- src gambar nya disesuaikan -->
+                                            <ImageView
+                                                android:id="@+id/imageView9"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:src="@drawable/ic_people"
+                                                app:layout_constraintBottom_toBottomOf="parent"
+                                                app:layout_constraintEnd_toEndOf="parent"
+                                                app:layout_constraintStart_toStartOf="parent"
+                                                app:layout_constraintTop_toTopOf="parent" />
+                                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                        <TextView
+                                            android:id="@+id/jumlahPeople"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="8dp"
+                                            android:text="Perlu kamu !"
                                             android:textAlignment="center"
                                             android:textColor="#000000"
                                             android:textSize="19sp"

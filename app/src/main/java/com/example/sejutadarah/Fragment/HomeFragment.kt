@@ -2,6 +2,7 @@ package com.example.sejutadarah.Fragment
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -154,6 +155,12 @@ class HomeFragment : Fragment() {
 //                .addToBackStack(null)
 //                .commit()
 //        }
+
+        adapter.setOnItemClickListener { article ->
+            val intent = Intent(requireContext(), InformasiDetail::class.java)
+            intent.putExtra(EdukasiFragment.INTENT_PARCELABLE, article as Parcelable)
+            startActivity(intent)
+        }
 
 
         return view

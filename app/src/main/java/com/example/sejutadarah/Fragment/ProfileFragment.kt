@@ -23,6 +23,8 @@ class ProfileFragment : Fragment() {
     private lateinit var emailName: TextView
     private lateinit var golongandarah: TextView
     private lateinit var nik: TextView
+    private lateinit var noHP: TextView
+    private lateinit var gender: TextView
 
     private lateinit var btnTukarPoin: CardView
 
@@ -42,8 +44,10 @@ class ProfileFragment : Fragment() {
         imageProfile = view.findViewById(R.id.foto_profile)
         textName = view.findViewById(R.id.nama_user)
         emailName = view.findViewById(R.id.email_user)
-        golongandarah = view.findViewById(R.id.tvSimbolGender)
+        golongandarah = view.findViewById(R.id.tvSimbolGoldar)
         nik = view.findViewById(R.id.nik_user)
+        noHP = view.findViewById(R.id.no_hp)
+        gender = view.findViewById(R.id.tvSimbolGender)
 
         btnTukarPoin = view.findViewById(R.id.btn_tukarPoin)
 
@@ -72,8 +76,10 @@ class ProfileFragment : Fragment() {
                                 }
                                 textName.text = user.fullName // Mengganti teks dengan nama pengguna
                                 emailName.text = user.email // Mengganti email dengan email pengguna
-                                golongandarah.text = user.bloodGroup // Mengganti email dengan email pengguna
-                                nik.text = user.nik // Mengganti email dengan email pengguna
+                                golongandarah.text = user.bloodGroup // Mengganti goldar dengan goldar pengguna
+                                nik.text = user.nik // Mengganti nik dengan nik pengguna
+                                noHP.text = user.noHP
+                                gender.text = user.gender
 
                             }
                             break

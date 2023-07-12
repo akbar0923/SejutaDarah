@@ -78,10 +78,10 @@
                             app:layout_constraintTop_toBottomOf="@+id/foto_profile" />
 
                         <TextView
-                            android:id="@+id/textView2"
+                            android:id="@+id/tvSimbolGender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tiket Anda : 3"
+                            android:text="Gender"
                             android:textColor="#ffffff"
                             android:textSize="18sp"
                             app:layout_constraintEnd_toEndOf="@+id/nama_user"
@@ -103,7 +103,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView2"
+                            app:layout_constraintTop_toBottomOf="@+id/tvSimbolGender"
                             app:layout_constraintVertical_bias="1.0">
 
                             <LinearLayout
@@ -185,11 +185,11 @@
                                             android:background="@drawable/circle_background">
 
                                             <TextView
-                                                android:id="@+id/tvSimbolGender"
+                                                android:id="@+id/tvJumlahTiket"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:fontFamily="@font/poppins_semibold"
-                                                android:text="L"
+                                                android:text="3"
                                                 android:textColor="@color/white"
                                                 android:textSize="30dp"
                                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -201,11 +201,11 @@
                                         </androidx.constraintlayout.widget.ConstraintLayout>
 
                                         <TextView
-                                            android:id="@+id/tvGender"
+                                            android:id="@+id/tv_Tiket"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="8dp"
-                                            android:text="Gender"
+                                            android:text="Tiket"
                                             android:textAlignment="center"
                                             android:textColor="#000000"
                                             android:textSize="13sp"
@@ -360,7 +360,7 @@
                                     android:textSize="18sp" />
 
                                 <TextView
-                                    android:id="@+id/textView11"
+                                    android:id="@+id/no_hp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
